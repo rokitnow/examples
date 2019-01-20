@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+   <a href="#" onclick="return processTextUs();" id="textUs">Text Us</a>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.3/mobile-detect.min.js"></script>
+   <script>
+        var textUsPhoneNumber = '5555555555';
+        var textUsLink = document.getElementById('textUs');
+        var md = new MobileDetect(window.navigator.userAgent);
+        if(md.phone()) {
+                textUsLink.style.display = 'inline';
+        } else {
+                textUsLink.style.display = 'none';
+        }
+        function processTextUs() {
+                if(md.phone()) {
+                        textUsLink.href = "sms:" + textUsPhoneNumber;
+                } else {
+                        return false;
+                }
+                return true;
+        }
+   </script>
+</body>
+</html>
